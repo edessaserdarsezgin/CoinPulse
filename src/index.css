@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", sans-serif;
+  --font-serif: "Playfair Display", serif;
+
+  --color-background: #0a0a0a;
+  --color-surface: #121212;
+  --color-primary: #00ff9d;
+  --color-secondary: #9d00ff;
+  --color-accent: #00d4ff;
+  --color-text: #e0e0e0;
+  --color-muted: #a0a0a0;
+
+  --animate-spin-slow: spin 10s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    @apply antialiased overflow-x-hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: black;
+    box-shadow: 0 0 15px rgba(0, 255, 157, 0.3);
+    @apply px-6 py-2 rounded-lg font-semibold transition-all duration-300;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.8;
+  }
+
+  .glass-card {
+    background-color: rgba(18, 18, 18, 0.5);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    @apply rounded-xl shadow-xl;
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(
+      to right,
+      var(--color-primary),
+      var(--color-accent),
+      var(--color-secondary)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
